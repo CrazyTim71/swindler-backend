@@ -1,13 +1,13 @@
 import express from 'express';
 
-import MessageResponse from '../../interfaces/MessageResponse';
+import type MessageResponse from '../../interfaces/MessageResponse';
 
 const router = express.Router();
 
 router.get<{}, MessageResponse>('/', (req, res) => {
-  res.status(200).json({
-    message: 'API up and running :P',
-  });
+    res.status(200).json({
+        message: 'API up and running :P',
+    });
 });
 
 export default router;

@@ -21,7 +21,8 @@
     "no-return-assign": 0,
     "camelcase": 0,
     "import/extensions": 0,
-    "@typescript-eslint/no-redeclare": 0
+    "@typescript-eslint/no-redeclare": 0,
+    "indent": [1, 4, { "SwitchCase": 1}]
   },
   "settings": {
     "import/parsers": {
