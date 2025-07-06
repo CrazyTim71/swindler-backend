@@ -1,36 +1,15 @@
 {
-  "name": "express-api-starter-ts",
-  "version": "1.2.0",
-  "description": " A basic starter for an express.js API with Typescript",
-  "main": "src/index.ts",
+  "private": true,
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "start:dist": "node dist/src/index.js",
-    "lint": "eslint --fix src test",
-    "test": "jest",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": [],
-  "author": "CrazyTim71",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CrazyTim71/swindler-backend"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@prisma/client": "^6.11.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.0.1",
-    "express": "^5.1.0",
-    "helmet": "^8.0.0",
-    "morgan": "^1.10.0",
-    "prisma": "^6.11.0"
+    "build": "nitro build",
+    "dev": "nitro dev",
+    "prepare": "nitro prepare",
+    "preview": "node .output/server/index.mjs",
+    "lint": "eslint --fix server test",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^24.0.8",
@@ -42,10 +21,18 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.31.0",
     "jest": "^30.0.3",
-    "nodemon": "^3.1.7",
+    "nitropack": "latest",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "morgan": "^1.10.0",
+    "nitro": "^0.0.0",
+    "prisma": "^6.11.0"
   }
 }
