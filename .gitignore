@@ -4,4 +4,22 @@ dist
 .nitro
 .cache
 .output
+.todo.md
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+.eslintcache
+
+# Local env files
 .env
+.env.*
+!.env.example
+
+# Dev
+/db

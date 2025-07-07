@@ -5,8 +5,11 @@
     "dev": "nitro dev",
     "prepare": "nitro prepare",
     "preview": "node .output/server/index.mjs",
-    "lint": "eslint --fix server test",
-    "test": "jest"
+    "lint": "eslint --fix server",
+    "test": "jest",
+    "db-push": "yarn prisma db push",
+    "db-deploy": "yarn prisma migrate deploy",
+    "db-drop": "yarn prisma db push --force-reset"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -28,6 +31,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.11.0",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.0.1",
     "morgan": "^1.10.0",

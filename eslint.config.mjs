@@ -16,7 +16,7 @@ export default [
             '@typescript-eslint': typescriptEslint
         },
         rules: {
-            'indent': ['error', 4],
+            'indent': ['error', 2],
             'no-unused-vars': 'off',
             '@typescript-eslint/no-unused-vars': [
                 'error',
