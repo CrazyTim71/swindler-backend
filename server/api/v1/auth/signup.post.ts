@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
       return sendApiResponse(event, 'Database error', 500, true)
     }
 
-    return { "success": true, "data": newUser }
+    return { "success": true }
 
   } catch (error: any) {
     throw createApiError('Database error', 500, error);
