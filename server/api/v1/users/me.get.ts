@@ -7,5 +7,8 @@ export default defineEventHandler(async (event) => {
   await requireJWT(event);
   const user = event.context.user;
   
-  return {"secret": "stuff", "user": user.username};
+  return {
+    "secret": "stuff", 
+    "user": user.username
+  };
 });

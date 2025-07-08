@@ -16,6 +16,21 @@ export async function requireAuth(event: any) {
     }
 
     const decodedToken = decodeJWT(token);
+    const userId = parseInt(decodedToken.userId);
+
+    // check if the user still exists
+    const existingUser = await prisma.user.findFirst({
+      where: {
+        AND: [
+          {id: userId},
+          {username: decodedToken.username}
+        ]
+      }
+    });
+
+    if (!existingUser) {
+      throw createApiError('Invalid or expired token', 401);
+    }
 
     event.context.user = {
       id: parseInt(decodedToken.userId),
