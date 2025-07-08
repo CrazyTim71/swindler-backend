@@ -23,3 +23,6 @@ logs
 
 # Dev
 /db
+
+priv.pem
+pub.pem

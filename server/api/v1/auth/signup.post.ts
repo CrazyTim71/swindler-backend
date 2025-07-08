@@ -1,4 +1,4 @@
-import { hashPassword } from "~/utils/crypto";
+import { hashPassword } from "~/utils/crypto/password";
 import { createApiError, sendApiResponse } from "~/utils/apiResponses";
 
 export default defineEventHandler(async (event) => {
