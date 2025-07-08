@@ -1,18 +1,15 @@
 import { hashPassword } from "~/utils/crypto";
-import { createApiError, sendApiResponse } from "~/utils/errorHandler";
+import { createApiError, sendApiResponse } from "~/utils/apiResponses";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const { username, password, passwordRepeated, email } = body
-
-  if (!username || !password || !passwordRepeated || !email) {
-    throw createApiError('Missing required fields', 400);
-  }
-
+  
   const validationResult = signupSchema.safeParse(body)
   if (!validationResult.success) {
     throw createApiError('Invalid input', 400, validationResult.error.errors)
   }
+
+  const { username, password, passwordRepeated, email } = validationResult.data;
 
   if (password != passwordRepeated) {
     throw createApiError('Passwords do not match', 400);
@@ -31,12 +28,12 @@ export default defineEventHandler(async (event) => {
     });
 
     if (existingUser) {
-      return sendApiResponse(event, 'User already exists', 400, true);
+      return sendApiResponse(event, 'User already exists', 400);
     }
 
     const hashedPW = await hashPassword(password);
     if (!hashedPW) {
-      return sendApiResponse(event, 'Internal server error', 500, true)
+      return sendApiResponse(event, 'Internal server error')
     }
 
     const newUser = await prisma.user.create({
@@ -48,7 +45,7 @@ export default defineEventHandler(async (event) => {
     });
 
     if (!newUser) {
-      return sendApiResponse(event, 'Database error', 500, true)
+      return sendApiResponse(event, 'Database error', 500)
     }
 
     return { "success": true }
